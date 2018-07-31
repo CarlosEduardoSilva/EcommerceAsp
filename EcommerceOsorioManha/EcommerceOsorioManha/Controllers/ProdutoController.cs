@@ -42,10 +42,12 @@ namespace EcommerceOsorioManha.Controllers
         public ActionResult RemoverProduto( int? id)
         {
 
-            ViewBag.IdProduto = id;
-                   
+            Produto produto = contexto.Produtos.Find(id);
+            contexto.Produtos.Remove(produto);
+            contexto.SaveChanges();
 
-            return View();
+
+            return RedirectToAction("Index", "Produto");
 
         }
 
