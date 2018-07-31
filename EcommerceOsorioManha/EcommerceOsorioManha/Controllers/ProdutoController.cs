@@ -39,13 +39,17 @@ namespace EcommerceOsorioManha.Controllers
 
         }
 
-        public ActionResult RemoverProduto( int id)
+        public ActionResult RemoverProduto( int? id)
         {
+
+            ViewBag.IdProduto = id;
+                   
+
             return View();
 
         }
 
-        public ActionResult AlterarProduto()
+        public ActionResult AlterarProduto( int? id)
         {
             return View();
         }
