@@ -1,6 +1,8 @@
-﻿using EcommerceOsorioManha.Models;
+﻿using EcommerceOsorioManha.DAL;
+using EcommerceOsorioManha.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -9,13 +11,13 @@ namespace EcommerceOsorioManha.Controllers
 {
     public class ProdutoController : Controller
     {
-        Contexto contexto = new Contexto();
+
 
         // GET: Produto
         public ActionResult Index()
         {
             ViewBag.Data = DateTime.Now;
-            ViewBag.Produtos = contexto.Produtos.ToList();
+            ViewBag.Produtos = ProdutoDAO.RetornarProdutos();
             return View();
         }
         public ActionResult CadastrarProduto()
@@ -33,27 +35,39 @@ namespace EcommerceOsorioManha.Controllers
                 Categoria = txtCategoria
             };
 
-            contexto.Produtos.Add(produto);
-            contexto.SaveChanges();
-            return RedirectToAction("Index","Produto");
-
-        }
-
-        public ActionResult RemoverProduto( int? id)
-        {
-
-            Produto produto = contexto.Produtos.Find(id);
-            contexto.Produtos.Remove(produto);
-            contexto.SaveChanges();
-
-
+            ProdutoDAO.CadastrarProduto(produto);
             return RedirectToAction("Index", "Produto");
 
         }
 
-        public ActionResult AlterarProduto( int? id)
+        public ActionResult RemoverProduto(int? id)
         {
+
+            ProdutoDAO.RemoverProduto(id);
+            return RedirectToAction("Index", "Produto");
+
+        }
+
+        public ActionResult AlterarProduto(int? id)
+        {
+            ViewBag.Produto = ProdutoDAO.BuscarProdutoPorId(id);
             return View();
+        }
+        [HttpPost]
+        public ActionResult AlterarProduto(string txtNome, string txtDescricao, string txtPreco, string txtCategoria, int txtId)
+        {
+            Produto produto = ProdutoDAO.BuscarProdutoPorId(txtId);
+
+
+            produto.Nome = txtNome;
+            produto.Descricao = txtDescricao;
+            produto.Preco = Convert.ToDouble(txtPreco);
+            produto.Categoria = txtCategoria;
+
+            ProdutoDAO.AlterarProduto(produto);           
+
+            return RedirectToAction("Index", "Produto");
+
         }
 
 
