@@ -53,5 +53,10 @@ namespace EcommerceOsorioManha.DAL
             {
             }
         }
+
+        public static Produto BuscarProdutoPorNome(Produto produto)
+        {
+            return contexto.Produtos.FirstOrDefault(x => x.Nome.Equals(produto.Nome));
+        }
     }
 }

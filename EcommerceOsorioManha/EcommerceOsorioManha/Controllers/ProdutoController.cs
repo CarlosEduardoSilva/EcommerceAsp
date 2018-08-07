@@ -16,7 +16,7 @@ namespace EcommerceOsorioManha.Controllers
         // GET: Produto
         public ActionResult Index()
         {
-            ViewBag.Data = DateTime.Now;            
+            ViewBag.Data = DateTime.Now;
             return View(ProdutoDAO.RetornarProdutos());
         }
         public ActionResult CadastrarProduto()
@@ -26,9 +26,17 @@ namespace EcommerceOsorioManha.Controllers
         [HttpPost]
         public ActionResult CadastrarProduto(Produto produto)
         {
-            ProdutoDAO.CadastrarProduto(produto);
-            return RedirectToAction("Index", "Produto");
+            if (ModelState.IsValid)
 
+
+            {
+                ProdutoDAO.CadastrarProduto(produto);
+                return RedirectToAction("Index", "Produto");
+            }
+            else
+            {
+                return View(produto);
+            }
         }
 
         public ActionResult RemoverProduto(int? id)
@@ -46,13 +54,13 @@ namespace EcommerceOsorioManha.Controllers
         [HttpPost]
         public ActionResult AlterarProduto(Produto produtoAlterado)
         {
-            Produto produtoOriginal = 
+            Produto produtoOriginal =
             ProdutoDAO.BuscarProdutoPorId(produtoAlterado.ProdutoId);
 
             produtoOriginal.Nome = produtoAlterado.Nome;
             produtoOriginal.Descricao = produtoAlterado.Descricao;
             produtoOriginal.Preco = produtoAlterado.Preco;
-            produtoOriginal.Categoria= produtoAlterado.Categoria;
+            produtoOriginal.Categoria = produtoAlterado.Categoria;
 
             ProdutoDAO.AlterarProduto(produtoOriginal);
 
