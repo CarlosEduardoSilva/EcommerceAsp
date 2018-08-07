@@ -30,8 +30,16 @@ namespace EcommerceOsorioManha.Controllers
 
 
             {
-                ProdutoDAO.CadastrarProduto(produto);
-                return RedirectToAction("Index", "Produto");
+                if (ProdutoDAO.CadastrarProduto(produto))
+                {
+                 
+                    return RedirectToAction("Index", "Produto");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Não é possivel um produto com o mesmo nome");
+                    return View(produto);
+                }
             }
             else
             {

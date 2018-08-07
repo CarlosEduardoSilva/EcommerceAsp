@@ -16,10 +16,16 @@ namespace EcommerceOsorioManha.DAL
             return contexto.Produtos.ToList();
         }
 
-        public static void CadastrarProduto(Produto produto)
+        public static bool CadastrarProduto(Produto produto)
         {
-            contexto.Produtos.Add(produto);
-            contexto.SaveChanges();
+            if (BuscarProdutoPorNome(produto) == null)
+            {
+
+                contexto.Produtos.Add(produto);
+                contexto.SaveChanges();
+                return true;
+            }
+            return false;
         }
 
         public static void RemoverProduto(int? id)
