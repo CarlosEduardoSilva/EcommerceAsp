@@ -1,9 +1,8 @@
-﻿
-@{
-    Layout = "~/Views/Shared/Layout.cshtml";
+﻿@using EcommerceOsorioManha.Models
+@model List<Produto>
 
+@{
     DateTime data = ViewBag.Data;
-    List<EcommerceOsorioManha.Models.Produto> produtos = ViewBag.Produtos;
 }
 
 <div>
@@ -32,7 +31,7 @@
         </tr>
 
 
-        @foreach (EcommerceOsorioManha.Models.Produto produtorodutoCadastrado in produtos)
+        @foreach (Produto produtorodutoCadastrado in Model)
         {
             <tr>
                 <td>@produtorodutoCadastrado.Nome</td>
