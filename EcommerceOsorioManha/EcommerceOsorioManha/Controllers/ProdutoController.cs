@@ -19,10 +19,12 @@ namespace EcommerceOsorioManha.Controllers
             ViewBag.Data = DateTime.Now;
             return View(ProdutoDAO.RetornarProdutos());
         }
+
         public ActionResult CadastrarProduto()
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult CadastrarProduto(Produto produto)
         {
@@ -59,6 +61,7 @@ namespace EcommerceOsorioManha.Controllers
         {
             return View(ProdutoDAO.BuscarProdutoPorId(id));
         }
+
         [HttpPost]
         public ActionResult AlterarProduto(Produto produtoAlterado)
         {
@@ -74,7 +77,6 @@ namespace EcommerceOsorioManha.Controllers
 
             return RedirectToAction("Index", "Produto");
         }
-
 
     }
 }
