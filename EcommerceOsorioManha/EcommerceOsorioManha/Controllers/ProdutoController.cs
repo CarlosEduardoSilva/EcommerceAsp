@@ -23,7 +23,8 @@ namespace EcommerceOsorioManha.Controllers
 
         public ActionResult CadastrarProduto()
         {
-            ViewBag.Categorias = new SelectList(CategoriaDAO.RetornarCategorias(),
+            ViewBag.Categorias = 
+                new SelectList(CategoriaDAO.RetornarCategorias(),
                 "CategoriaID", "Nome");
             return View();
         }
