@@ -12,8 +12,6 @@ namespace EcommerceOsorioManha.Controllers
 {
     public class ProdutoController : Controller
     {
-
-
         // GET: Produto
         public ActionResult Index()
         {
@@ -25,15 +23,18 @@ namespace EcommerceOsorioManha.Controllers
 
         public ActionResult CadastrarProduto()
         {
-            ViewBag.Categorias = new SelectList(CategoriaDAO.RetornarCategorias(), "CategoriaID", "Nome");
+            ViewBag.Categorias = new SelectList(CategoriaDAO.RetornarCategorias(),
+                "CategoriaID", "Nome");
             return View();
         }
 
         [HttpPost]
-        public ActionResult CadastrarProduto(Produto produto, int? Categorias, HttpPostedFileBase fupImagem)
+        public ActionResult CadastrarProduto(Produto produto, 
+            int? Categorias, HttpPostedFileBase fupImagem)
         {
             ViewBag.Categorias =
-            new SelectList(CategoriaDAO.RetornarCategorias(), "CategoriaId", "Nome");
+                new SelectList(CategoriaDAO.RetornarCategorias(), 
+                "CategoriaID", "Nome");
             if (ModelState.IsValid)
 
 
@@ -43,7 +44,8 @@ namespace EcommerceOsorioManha.Controllers
                     if (fupImagem != null)
                     {
                         string nomeImagem = Path.GetFileName(fupImagem.FileName);
-                        string caminho = Path.Combine(Server.MapPath("~/Images/"), nomeImagem);
+                        string caminho = Path.Combine(Server.MapPath("~/Imagens/"), 
+                            nomeImagem);
 
                         fupImagem.SaveAs(caminho);
 
@@ -68,6 +70,7 @@ namespace EcommerceOsorioManha.Controllers
                     }
 
                 }
+                ModelState.AddModelError("", "Por favor, selecione uma categoria!");
                 return View(produto);
             }
             else
