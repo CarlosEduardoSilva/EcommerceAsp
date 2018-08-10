@@ -5,7 +5,7 @@
     Produto produto = ViewBag.ProdutoAlteracao;
 }
 
-<h1>AlterarProduto</h1>
+<h1>Alterar Produto</h1>
 <div>
     @using (Html.BeginForm("AlterarProduto", "Produto", FormMethod.Post, new { @class = "form-horizontal" }))
     {
@@ -44,8 +44,11 @@
                                 @Html.TextBoxFor(model => model.Categoria, new { @class = "form-control", @placeholder = "Nome do Produto" })
                             </div>
                         </div>
-
-                        <input type="submit" value="Cadastrar" />
-        </fieldset>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <input type="submit" value="Cadastrar" class="btn btn-primary" />
+                            </div>
+                        </div>
+</fieldset>
     }
 </div> 
