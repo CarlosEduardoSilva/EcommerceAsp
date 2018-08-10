@@ -3,6 +3,7 @@ using EcommerceOsorioManha.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -20,28 +21,54 @@ namespace EcommerceOsorioManha.Controllers
             return View(ProdutoDAO.RetornarProdutos());
         }
 
+
+
         public ActionResult CadastrarProduto()
         {
+            ViewBag.Categorias = new SelectList(CategoriaDAO.RetornarCategorias(), "CategoriaID", "Nome");
             return View();
         }
 
         [HttpPost]
-        public ActionResult CadastrarProduto(Produto produto)
+        public ActionResult CadastrarProduto(Produto produto, int? Categorias, HttpPostedFileBase fupImagem)
         {
+            ViewBag.Categorias =
+            new SelectList(CategoriaDAO.RetornarCategorias(), "CategoriaId", "Nome");
             if (ModelState.IsValid)
 
 
             {
-                if (ProdutoDAO.CadastrarProduto(produto))
+                if (Categorias != null)
                 {
-                 
-                    return RedirectToAction("Index", "Produto");
+                    if (fupImagem != null)
+                    {
+                        string nomeImagem = Path.GetFileName(fupImagem.FileName);
+                        string caminho = Path.Combine(Server.MapPath("~/Images/"), nomeImagem);
+
+                        fupImagem.SaveAs(caminho);
+
+                        produto.Imagem = nomeImagem;
+
+                    }
+                    else
+                    {
+                        produto.Imagem = "semimagem.jpg";
+                    }
+
+                    produto.Categoria = CategoriaDAO.BuscarCategoriaPorId(Categorias);
+                    if (ProdutoDAO.CadastrarProduto(produto))
+                    {
+
+                        return RedirectToAction("Index", "Produto");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Não é possivel um produto com o mesmo nome");
+                        return View(produto);
+                    }
+
                 }
-                else
-                {
-                    ModelState.AddModelError("", "Não é possivel um produto com o mesmo nome");
-                    return View(produto);
-                }
+                return View(produto);
             }
             else
             {

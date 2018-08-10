@@ -27,6 +27,7 @@
             <th>Descrição</th>
             <th>Preço</th>
             <th>Categoria</th>
+            <th>Imagens</th>
             <th></th>
             <th></th>
         </tr>
@@ -39,6 +40,7 @@
                 <td> @produtorodutoCadastrado.Descricao</td>
                 <td> @produtorodutoCadastrado.Preco</td>
                 <td> @produtorodutoCadastrado.Categoria</td>
+                <td> <img src="~/Imagens/@produtorodutoCadastrado.Imagem" alt="Imagem do produto" style="width:100px", height:100px"   </td>
                 <td> @Html.ActionLink("Remover", "RemoverProduto", "Produto", new { id = produtorodutoCadastrado.ProdutoId }, null)   </td>
                 <td> @Html.ActionLink("Alterar", "AlterarProduto", "Produto", new { id = produtorodutoCadastrado.ProdutoId }, null)   </td>
             </tr>

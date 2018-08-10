@@ -128,6 +128,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Global.asax" />
+    <Content Include="Imagens\semimagem.jpg" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -136,6 +137,7 @@
     <Compile Include="Controllers\ProdutoController.cs" />
     <Compile Include="DAL\CategoriaDAO.cs" />
     <Compile Include="DAL\ProdutoDAO.cs" />
+    <Compile Include="DAL\SingletonContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -150,6 +152,18 @@
     <Compile Include="Migrations\201808100144288_Banco2.cs" />
     <Compile Include="Migrations\201808100144288_Banco2.Designer.cs">
       <DependentUpon>201808100144288_Banco2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808101128320_Nova.cs" />
+    <Compile Include="Migrations\201808101128320_Nova.Designer.cs">
+      <DependentUpon>201808101128320_Nova.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808101136356_New.cs" />
+    <Compile Include="Migrations\201808101136356_New.Designer.cs">
+      <DependentUpon>201808101136356_New.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808101221595_AA.cs" />
+    <Compile Include="Migrations\201808101221595_AA.Designer.cs">
+      <DependentUpon>201808101221595_AA.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
@@ -172,7 +186,7 @@
     <Content Include="Views\Categoria\Index.cshtml" />
     <Content Include="Views\Categoria\AlterarCategoria.cshtml" />
     <Content Include="Views\Categoria\CadastrarCategoria.cshtml" />
-    <Content Include="Views\Categoria\RemoverProduto.cshtml" />
+    <Content Include="Views\Categoria\RemoverCategoria.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -192,6 +206,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808100144288_Banco2.resx">
       <DependentUpon>201808100144288_Banco2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808101128320_Nova.resx">
+      <DependentUpon>201808101128320_Nova.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808101136356_New.resx">
+      <DependentUpon>201808101136356_New.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808101221595_AA.resx">
+      <DependentUpon>201808101221595_AA.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

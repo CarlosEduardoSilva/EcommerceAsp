@@ -9,11 +9,13 @@ namespace EcommerceOsorioManha.DAL
 {
     public class ProdutoDAO
     {
-        private static Contexto contexto = new Contexto();
+        private static Contexto contexto = SingletonContext.GetInstance();
 
         public static List<Produto> RetornarProdutos()
         {
-            return contexto.Produtos.ToList();
+            return contexto.Produtos.
+                Include("Categoria").
+                ToList();
         }
 
         public static bool CadastrarProduto(Produto produto)

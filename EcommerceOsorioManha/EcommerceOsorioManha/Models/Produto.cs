@@ -22,9 +22,8 @@ namespace EcommerceOsorioManha.Models
         [Display(Name = "Preço do produto")]
         public double Preco { get; set; }
 
-        [MinLength(2, ErrorMessage = "O campo deve ter no minimo 2 caracteres!")]
         [Display(Name = "Categoria do produto")]
-        public string Categoria { get; set; }
+        public Categoria Categoria { get; set; }
 
         [Display(Name = "Imagem do produto")]
         public string Imagem { get; set; }
