@@ -1,12 +1,26 @@
 ﻿@model  EcommerceOsorioManha.ViewModels.ProdutosViewModel
+@using EcommerceOsorioManha.Models
+
 @{
     ViewBag.Title = "RemoverProduto";
     Layout = "~/Views/Shared/Layout.cshtml";
+    List<Categoria> categorias = ViewBag.Categorias;
 }
 
 <h2>Home</h2>
 <table border="1">
     <tr>
+
+        <ul style="text-align:center; margin-top: 30px; margin-bottom: 30px" class="nav nav-tabs">
+            @foreach (Categoria item in categorias)
+            {
+                <li class="nav-item">
+                    @Html.ActionLink(item.Nome, "Index", "Home", new { id = item.CategoriaID}, new { @class = "nav-link" })
+
+                </li>
+            }
+        </ul>
+
         @foreach (var produto in @Model.Produtos)
         {
 

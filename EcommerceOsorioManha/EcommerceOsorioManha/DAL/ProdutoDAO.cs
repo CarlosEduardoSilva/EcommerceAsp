@@ -67,11 +67,23 @@ namespace EcommerceOsorioManha.DAL
             return contexto.Produtos.FirstOrDefault(x => x.Nome.Equals(produto.Nome));
         }
 
+        public static List<Produto> RetornarProdutosPorCategoria(string cat)
+        {
+            return contexto.Produtos.Where(x => x.Categoria.Nome.ToString().Contains(cat)).ToList();
+        }
+
         public static List<Produto> RetornarProdutosHome(int? CategoriaID)
         {
             return CategoriaID.HasValue ? 
                 contexto.Produtos.Where(p => p.Categoria.CategoriaID == CategoriaID).ToList() 
                 : contexto.Produtos.ToList();
+        }
+
+        public static List<Produto> BuscarProdutosPorCategoria(int? id)
+        {
+            return contexto.Produtos.
+                Include("Categoria").Where(x => x.Categoria.CategoriaID== id).
+                ToList();
         }
     }
 }

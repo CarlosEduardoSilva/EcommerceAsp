@@ -6,9 +6,8 @@ using System.Web;
 
 namespace EcommerceOsorioManha.ViewModels
 {
-    public class ProdutosViewModel
+    public class CategoriasViewModel
     {
-        public List<Produto> Produtos { get; set; }
-        
+        public List<Categoria> categorias { get; set; }
     }
 }
