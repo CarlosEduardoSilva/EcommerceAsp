@@ -1,0 +1,27 @@
+﻿@model  EcommerceOsorioManha.ViewModels.ProdutosViewModel
+@{
+    ViewBag.Title = "RemoverProduto";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Home</h2>
+<table border="1">
+    <tr>
+        @foreach (var produto in @Model.Produtos)
+        {
+
+
+            <td>
+                @Html.ActionLink("Detalhes", "DetalharProduto", "Produto", new { id = produto.ProdutoId }, null)
+
+
+                @produto.Nome
+                <img src="~/Imagens/@produto.Imagem" alt="Imagem do produto" style="width:100px" , height:100px"
+            </td>
+
+
+
+        }
+    </tr>
+</table>
+

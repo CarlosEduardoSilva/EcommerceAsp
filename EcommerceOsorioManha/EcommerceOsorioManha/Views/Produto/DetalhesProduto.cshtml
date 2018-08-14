@@ -1,0 +1,19 @@
+﻿@model  EcommerceOsorioManha.Models.Produto
+
+<h1>Alterar Produto</h1>
+<div>
+
+
+        <fieldset>
+
+
+
+            <td>
+                @Model.Nome
+                @Model.Descricao
+                @Model.Preco.ToString("C2")             
+                <img src="~/Imagens/@Model.Imagem" alt="Imagem do produto" style="width:100px" , height:100px"
+            </td>
+        </fieldset>
+
+</div> 

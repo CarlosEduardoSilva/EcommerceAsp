@@ -1,4 +1,4 @@
-﻿
+﻿@model   EcommerceOsorioManha.ViewModels.ProdutosViewModel
 @{
     ViewBag.Title = "RemoverProduto";
     Layout = "~/Views/Shared/Layout.cshtml";
@@ -6,3 +6,11 @@
 
 <h2>RemoverProduto</h2>
 
+@foreach(var produto in @Model.Produtos)
+{
+<div class="row">
+    <div class="col-sm-4">@produto.Nome</div>
+    <div class="col-sm-4">@produto.Imagem</div>
+    
+</div>
+}

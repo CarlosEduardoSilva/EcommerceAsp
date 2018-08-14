@@ -66,5 +66,12 @@ namespace EcommerceOsorioManha.DAL
         {
             return contexto.Produtos.FirstOrDefault(x => x.Nome.Equals(produto.Nome));
         }
+
+        public static List<Produto> RetornarProdutosHome(int? CategoriaID)
+        {
+            return CategoriaID.HasValue ? 
+                contexto.Produtos.Where(p => p.Categoria.CategoriaID == CategoriaID).ToList() 
+                : contexto.Produtos.ToList();
+        }
     }
 }

@@ -109,5 +109,13 @@ namespace EcommerceOsorioManha.Controllers
             return RedirectToAction("Index", "Produto");
         }
 
+        public ActionResult DetalharProduto(int id)
+        {
+            var produto = ProdutoDAO.BuscarProdutoPorId(id);
+
+
+            return View("DetalhesProduto", produto);
+
+        } 
     }
 }

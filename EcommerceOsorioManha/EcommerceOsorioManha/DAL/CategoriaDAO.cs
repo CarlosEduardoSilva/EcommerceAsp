@@ -66,5 +66,7 @@ namespace EcommerceOsorioManha.DAL
             return contexto.Categorias.FirstOrDefault(x => x.Nome.Equals(categoria.Nome));
         }
 
+
+
     }
 }
