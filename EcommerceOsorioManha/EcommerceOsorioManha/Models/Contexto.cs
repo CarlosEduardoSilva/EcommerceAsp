@@ -12,6 +12,8 @@ namespace EcommerceOsorioManha.Models
 
         public DbSet<Categoria> Categorias { get; set; }
 
+        public DbSet<ItemVenda> ItemVendas { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Categoria>().HasMany(_ => _.Produtos)

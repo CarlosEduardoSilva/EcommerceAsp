@@ -11,12 +11,14 @@ namespace EcommerceOsorioManha.Controllers
     public class HomeController : Controller
     {
 
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
             ViewBag.Data = DateTime.Now;
             var produtos = new ProdutosViewModel
             {
-                Produtos = ProdutoDAO.RetornarProdutosHome(null)
+                Produtos = ProdutoDAO.RetornarProdutosHome(id ?? null),
+                Categorias = CategoriaDAO.RetornarCategorias()
+
             };
             return View(produtos);
         }

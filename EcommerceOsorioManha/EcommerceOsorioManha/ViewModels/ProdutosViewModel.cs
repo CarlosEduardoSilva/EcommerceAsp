@@ -9,6 +9,7 @@ namespace EcommerceOsorioManha.ViewModels
     public class ProdutosViewModel
     {
         public List<Produto> Produtos { get; set; }
-        
+        public List<Categoria> Categorias { get; set; }
     }
+
 }
